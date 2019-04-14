@@ -1,0 +1,12 @@
+# create multiple directories
+
+---
+- hosts: myserver
+  become: true
+  tasks:
+  - name: Create multiple directories
+  file: path={{item}} state=directory
+  with_items:
+  - '/home/linadm/dir1'
+  - '/home/linadm/dir2'
+  - '/home/linadm/dir3'
