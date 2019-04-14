@@ -1,0 +1,11 @@
+# USing loops are used to repat a multiple taks using different input values
+
+---
+- hosts: all
+  become: true
+  vars:
+     packages: [ 'wget', 'httpd', 'curl' ]
+  tasks:
+     - name: Install Package
+       yum: name={{ item }} state=latest
+       with_items: packages
