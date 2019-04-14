@@ -1,0 +1,11 @@
+#Using loops with_items
+
+- hosts: all
+  become: true
+  tasks:
+   - name: install multiple packages
+     yum: name= "{{ item }}" state=latest
+     with_items:
+      - git
+      - httpd
+      - wget
