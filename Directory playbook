@@ -1,0 +1,6 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Create directory
+    file: path=/home/ec2-user/testdir state=directory mode=775 owner=linadm group=linadm
