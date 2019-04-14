@@ -7,5 +7,5 @@
      packages: [ 'wget', 'httpd', 'curl' ]
   tasks:
      - name: Install Package
-       yum: name={{ item }} state=latest
-       with_items: packages
+       yum: name={{ packages }} state=latest
+       
