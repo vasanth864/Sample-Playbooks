@@ -1,0 +1,23 @@
+- hosts: myserver
+  remote_user: ansadm
+  become: yes
+  tasks:
+  - name: ensure apache is at the latest version
+    yum:
+      name: httpd
+      state: latest
+  - name: write the apache config file
+    template:
+      src: /home/ansadm/index.html
+      dest: /var/www/html/
+    notify:
+    - restart apache
+  - name: ensure apache is running
+    service:
+      name: httpd
+      state: started
+  handlers:
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
