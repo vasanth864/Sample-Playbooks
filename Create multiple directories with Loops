@@ -1,0 +1,9 @@
+- hosts: myserver
+  become: true
+  tasks:
+  - name: Create multiple directories
+  file: path={{item}} state=directory
+  with_items:
+  - '/home/ansadm/dir1'
+  - '/home/ansadm/dir2'
+  - '/home/ansadm/dir3'
