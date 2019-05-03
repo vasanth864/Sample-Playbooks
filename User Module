@@ -1,0 +1,5 @@
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Create User
+    user: name=user1 password=welcome groups=mygrp shell=/bin/bash
